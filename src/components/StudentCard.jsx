@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 
-export default function StudentCard({ student, onDelete }) {
+export default function StudentCard({ student }) {
   const { id, name, age, email, city = 'Unknown' } = student
   const navigate = useNavigate()
 
@@ -12,24 +12,14 @@ export default function StudentCard({ student, onDelete }) {
         </div>
         <div style={{ display: 'flex', gap: '8px' }}>
           {localStorage.getItem('role') === 'admin' && (
-            <>
-              <button
-                className="sma-btn-icon sma-btn-icon-edit"
-                style={{ width: 'auto', padding: '0 12px' }}
-                onClick={() => navigate(`/students/${id}/edit`)}
-                title="Edit student"
-              >
-                Edit
-              </button>
-              <button
-                className="sma-btn-icon sma-btn-icon-delete"
-                style={{ width: 'auto', padding: '0 12px' }}
-                onClick={() => onDelete(id)}
-                title="Delete student"
-              >
-                Delete
-              </button>
-            </>
+            <button
+              className="sma-btn-icon sma-btn-icon-edit"
+              style={{ width: 'auto', padding: '0 12px' }}
+              onClick={() => navigate(`/students/${id}/edit`)}
+              title="Edit student"
+            >
+              Edit
+            </button>
           )}
         </div>
       </div>

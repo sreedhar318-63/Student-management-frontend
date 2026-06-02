@@ -27,17 +27,6 @@ export default function StudentList() {
     fetchStudents()
   }, []) 
 
-  const handleDelete = async (id) => {
-    if (!window.confirm('Delete this student? This cannot be undone.')) return
-
-    try {
-      await client.delete(`/students/${id}`)
-      fetchStudents()   
-    } catch (err) {
-      alert('Delete failed. Please try again.')
-    }
-  }
-
   if (loading) {
     return (
       <>
@@ -88,7 +77,6 @@ export default function StudentList() {
                 <StudentCard
                   key={student.id}
                   student={student}
-                  onDelete={handleDelete}
                 />
               ))}
             </div>
